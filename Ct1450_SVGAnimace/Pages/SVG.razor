@@ -1,9 +1,21 @@
 ﻿@page "/svgAnimace"
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <PageTitle>Animace SVG</PageTitle>
 <div>
     <button class="btn btn-primary" @onclick="PridatTvar">Přidat obrazec</button>
-    <button class="btn btn-warning">Odebrat poslední obrazec</button>
+    <button class="btn btn-warning" @onclick=OdebratTvar>Odebrat poslední obrazec</button>
+
+    <button class="btn btn-primary" @onclick="PosunTvaru">Spustit posun</button>
+    <button class="btn btn-secondary" @onclick="PosunZastavit">Zastavit posun</button>
+    
+    <input type="range" class="form-range" @bind-value=KrokAnimace min="1" max="10">
+
+</div>
+<div>
+    <button class="btn btn-success" @onclick="Ulozit">Uložit</button>
+    <button class="btn btn-info" @onclick="Nahrat">Nahrat</button>
+    <button class="btn btn-danger" @onclick="Smazat">Smazat</button>
 </div>
 
 <svg class="my-3" style="border: black solid" width="@SvgWidth" height="@SvgHeight" xmlns="http://www.w3.org/2000/svg">
